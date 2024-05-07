@@ -9,16 +9,16 @@ from .models import Flight
 from .models import Aircraft
 from .models import AircraftFeedback
 from .forms import AirlineForm, FleetFormSet, FlightFormSet
-from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponse
 from verify_email.email_handler import send_verification_email
 from django_project.settings import DEFAULT_FROM_EMAIL
 from django.core.mail import send_mail
-from django.contrib.auth import login
 from airline_app.forms import CustomUserCreationForm
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 import re
 from airline_app.forms import AircraftFeedbackForm
 from django.forms import modelformset_factory
@@ -27,6 +27,10 @@ from django.db.models import F, ExpressionWrapper, FloatField, Avg, Sum, Count
 from django.db.models.functions import TruncDay
 from datetime import datetime, timedelta
 
+@login_required
+def logout(request):
+  logout(request)
+  return redirect('logout')
 
 def get_current_airline(request):
   try:
