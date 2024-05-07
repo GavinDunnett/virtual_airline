@@ -1,0 +1,38 @@
+<!--
+- apr 15, 2024. Initial version.
+-->
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+    <h1 class="pt-5">Flight Schedule</h1>
+        <h5 class="lead">Plan your flights and fly!</h5>
+    <form method="post"> {% csrf_token %}
+        <p>
+        <button type="submit" name="save" class="btn btn-primary">Save</button> or
+        <button type="submit" name="submit" class="btn btn-warning">Fly!</button>
+        </p>
+        <div class="row pt-3">
+        {{ formset.management_form }}
+        {% for form in formset %}
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+            <div class="card-deck">
+            <div class="card shadow">
+            {% if form.empty_permitted %}
+            <h4 class="card-header bg-success text-white">NEW</h4>
+            {% else %}
+            <h4 class="card-header">{{ form.number.value }}</h4>
+            {% endif %}
+            <p class="card-text">
+            {{ form.as_p }}
+            </p>
+            </div>
+            </div>
+            </div>
+        {% endfor %}
+        </div>
+    </form>            
+    </div>
+{% endblock %}

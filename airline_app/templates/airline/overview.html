@@ -1,0 +1,31 @@
+<!-- airline/overview.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+    <h1 class="pt-5">Airline</h1>
+        <h5 class="lead">Customize your airline and view its analytics.</h5>
+    <div class="row pt-3">
+    <form method="post"> {% csrf_token %}
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="card-deck">
+        <div class="card shadow">
+        <h4 class="card-header bg-info text-white">{{ airline_obj.name }}</h4>
+        <div class="card-body">
+        <p class="lead">Rating: {{ airline_obj.rating}}</p>
+        <p class="lead">Profits: ${{ airline_obj.profit}}</p>
+        <p><button type="submit" name="analytics" class="btn btn-primary ">Analytics</button></p>
+        <hr/> 
+        <p>{{ airline.as_p }}</p>
+        </div>
+        <p>
+        <button type="submit" name="submit" class="btn btn-primary">Save</button>
+        </p>
+        </div>
+        </div>
+        </div>
+    </form>
+    </div>
+ </div>
+{% endblock %}

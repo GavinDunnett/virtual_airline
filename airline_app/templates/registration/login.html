@@ -1,0 +1,23 @@
+<!--
+## [1.0.0] - 2024-02-23
+### Added
+- Bootstrap center alignment and buttons
+- Initial version. 
+-->
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="p-5">Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+        <a href="{% url 'password_reset' %}">Forgot password?</a>
+        </div>
+        <input type="submit" class="btn btn-primary mt-4 mb-4" value='SIGN IN'>
+        <div>
+        Not a member? <a href="{% url 'register' %}">Register</a>
+        </div>
+    </form>
+{% endblock %}

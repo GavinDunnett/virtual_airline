@@ -1,0 +1,33 @@
+<!--
+- apr 17, 2024. Initial version.
+-->
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+    <h1 class="pt-5">Airports</h1>
+    <h5 class="lead">Airport information.</h5>
+    <div class="row pt-3">
+    {% for airport in airports %}
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+        <div class="card-deck">
+        <div class="card shadow">
+        <h4 class="card-header bg-primary text-white">{{ airport.location }}</h4>
+        <div class="card-text p-3">
+        {{ airport.name }}
+        <div class="lead">Rating: {{ airport.rating}}</div>
+        <hr>
+        Today's Delays
+        <br>
+        Arrivals: {{ airport.arrival_delay }} mins
+        <br>
+        Departures: {{ airport.departure_delay }} mins
+        </div>
+        </div>
+        </div>
+        </div>
+    {% endfor %}
+    </div>
+    </div>
+{% endblock %}
