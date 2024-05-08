@@ -48,13 +48,7 @@
         <a class="nav-link" href="{% url 'flights' %}">Schedule</a>
         <a class="nav-link" href="{% url 'airports' %}">Airports</a>
         <a class="nav-link" href="{% url 'aircraft' %}">Aircraft</a>
-        <li class="nav-item dropdown">
-          <a class="nav-link btn-success dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            About</a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="{% url 'about_team' %}">The Team</a></li>
-          </ul>
-        </li>
+        <a class="nav-link" href="{% url 'about' %}">About</a>
       </div>
       <div class="navbar-nav ms-auto">
         {% if user.is_authenticated %}

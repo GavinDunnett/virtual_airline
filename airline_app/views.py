@@ -305,8 +305,8 @@ def AircraftFeedbackView(request):
   return render(request, "aircraft/feedback.html", context)
 
 
-def about_team(request):
-  return render(request, 'about_team.html')
+def about(request):
+  return render(request, 'about.html')
 
 
 def onboarding(request):

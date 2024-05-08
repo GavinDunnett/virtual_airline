@@ -1,21 +1,3 @@
-'''
-## [1.0.1] - 2024-03-25
-### Added
-- Aircraft lookup page
-'''
-'''
-## [1.0.0] - 2024-04-17
-### Added
-- aircraft path.
-- fleet path
-- about team.
-- register path.
-- accoutns path.
-- dashboard path.
-### Changed
-- "register" path to "registration/register/"
-'''
-
 from django.urls import path, include
 from . import views
 """
@@ -36,22 +18,19 @@ Including another URLconf
 """
 
 urlpatterns = [
-    path('airline/overview', views.airline, name='airline'),
-    path('airline/analytics', views.airline_analytics, name='airline_analytics'),
-    path('flights/overview', views.flights, name='flights'),
-    path('flights/results', views.flights, name='flights_results'),
-    path('airports/overview', views.airports, name='airports'),
+    path('', views.dashboard, name='dashboard'),
+    path('about/', views.about, name='about'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path("aircraft/feedback/", views.AircraftFeedbackView, name='aircraft_feedback'),
     path('aircraft/overview', views.aircraft, name='aircraft'),
     path("aircraft/search/", views.AircraftFilterView, name='aircraft_search'),
-    path("aircraft/feedback/",
-         views.AircraftFeedbackView,
-         name='aircraft_feedback'),
+    path('airline/analytics',views.airline_analytics,name='airline_analytics'),
+    path('airline/overview', views.airline, name='airline'),
+    path('airports/overview', views.airports, name='airports'),
     path('fleet/overview/', views.fleet, name='fleet'),
-    path('verification/', include('verify_email.urls')),
-    path('about_team/', views.about_team, name='about_team'),
+    path('flights/overview', views.flights, name='flights'),
+    path('flights/results', views.flights, name='flights_results'),
     path('onboarding/', views.onboarding, name='onboarding'),
     path('registration/register/', views.register, name='register'),
-    path('flights/overview', views.flights, name='flights'),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('', views.dashboard, name='dashboard'),
+    path('verification/', include('verify_email.urls')),
 ]
